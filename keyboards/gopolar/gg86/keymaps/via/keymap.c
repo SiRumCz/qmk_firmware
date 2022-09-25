@@ -300,7 +300,8 @@ void rgb_matrix_indicators_user(void) {
         led_t led_usb_state = host_keyboard_led_state();
 
         oled_write_P(led_usb_state.caps_lock ? PSTR("CAPLK ") : PSTR("----- "), false);
-        oled_write_P(PSTR(" GOPOLAR "), false);
+        oled_write_P(PSTR("  CZ!!!  "), false);
+        // oled_write_P(PSTR(" GOPOLAR "), false);
         oled_write_P(led_usb_state.scroll_lock ? PSTR(" SCRLK") : PSTR(" -----"), false);
 
         // sleep if it has been long enough since we last got a char

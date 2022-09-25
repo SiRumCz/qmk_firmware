@@ -219,9 +219,6 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
         case RGB_C_E:
             if (record->event.pressed) {
                 switch (rgb_matrix_get_mode()) {
-                    case RGB_MATRIX_CUSTOM_CUSTOM_GRADIENT:
-                        rgb_matrix_mode(RGB_MATRIX_CUSTOM_COOL_DIAGONAL);
-                        return false;
                     case RGB_MATRIX_CUSTOM_COOL_DIAGONAL:
                         rgb_matrix_mode(RGB_MATRIX_CUSTOM_FLOWER_BLOOMING);
                         return false;
@@ -229,13 +226,16 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
                         rgb_matrix_mode(RGB_MATRIX_CUSTOM_RAINBOW_REACTIVE_SIMPLE);
                         return false;
                     case RGB_MATRIX_CUSTOM_RAINBOW_REACTIVE_SIMPLE:
-                        rgb_matrix_mode(RGB_MATRIX_CUSTOM_KITT);
+                        rgb_matrix_mode(RGB_MATRIX_RAINDROPS);
                         return false;
-                    case RGB_MATRIX_CUSTOM_KITT:
-                        rgb_matrix_mode(RGB_MATRIX_CUSTOM_RANDOM_BREATH_RAINBOW);
+                    case RGB_MATRIX_RAINDROPS:
+                        rgb_matrix_mode(RGB_MATRIX_JELLYBEAN_RAINDROPS);
+                        return false;
+                    case RGB_MATRIX_JELLYBEAN_RAINDROPS:
+                        rgb_matrix_mode(RGB_MATRIX_CUSTOM_COOL_DIAGONAL);
                         return false;
                     default:
-                        rgb_matrix_mode(RGB_MATRIX_CUSTOM_CUSTOM_GRADIENT);
+                        rgb_matrix_mode(RGB_MATRIX_CUSTOM_COOL_DIAGONAL);
                         return false;
                 }
             }
@@ -274,31 +274,4 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
 	}
 
     return true;
-}
-
-void rgb_matrix_indicators_user(void) {
-    HSV      hsv = rgb_matrix_config.hsv;
-    uint8_t time = scale16by8(g_rgb_timer, qadd8(32, 1));
-    hsv.h        = time;
-    RGB      rgb = hsv_to_rgb(hsv);
-
-    if ((rgb_matrix_get_flags() & LED_FLAG_KEYLIGHT)) {
-        if (host_keyboard_led_state().caps_lock) {
-            rgb_matrix_set_color(25, rgb.r, rgb.g, rgb.b);
-        }
-        if (host_keyboard_led_state().scroll_lock) {
-            rgb_matrix_set_color(73, rgb.r, rgb.g, rgb.b);
-        }
-    } else {
-        if (host_keyboard_led_state().caps_lock) {
-            rgb_matrix_set_color(25, rgb.r, rgb.g, rgb.b);
-        } else {
-            rgb_matrix_set_color(25, 0, 0, 0);
-        }
-        if (host_keyboard_led_state().scroll_lock) {
-            rgb_matrix_set_color(73, rgb.r, rgb.g, rgb.b);
-        } else {
-            rgb_matrix_set_color(73, 0, 0, 0);
-        }
-    }
 }

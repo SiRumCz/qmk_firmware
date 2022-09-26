@@ -232,6 +232,9 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
                         rgb_matrix_mode(RGB_MATRIX_JELLYBEAN_RAINDROPS);
                         return false;
                     case RGB_MATRIX_JELLYBEAN_RAINDROPS:
+                        rgb_matrix_mode(RGB_MATRIX_PIXEL_RAIN);
+                        return false;
+                    case RGB_MATRIX_PIXEL_RAIN:
                         rgb_matrix_mode(RGB_MATRIX_CUSTOM_COOL_DIAGONAL);
                         return false;
                     default:

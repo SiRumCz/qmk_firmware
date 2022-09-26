@@ -67,6 +67,9 @@
             case RGB_MATRIX_JELLYBEAN_RAINDROPS:
                 oled_write_P(PSTR("JLRNDRS"), false);
                 break;
+            case RGB_MATRIX_PIXEL_RAIN:
+                oled_write_P(PSTR("PXLRAIN"), false);
+                break;
             default:
                 oled_write_P(PSTR("GRDIENT"), false);
                 break;

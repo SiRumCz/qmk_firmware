@@ -19,8 +19,14 @@
 #define DYNAMIC_KEYMAP_LAYER_COUNT 2
 #define NO_ACTION_ONESHOT
 
-#define RGBLIGHT_SLEEP 5 /* If defined, the RGB lighting will be switched off when the host goes to sleep */
-#define RGBLIGHT_ANIMATIONS
+/* Set 0 if debouncing isn't needed */
+#define DEBOUNCE 5
+
+/* Forcing to use NKRO instead 6KRO */
+#define FORCE_NKRO
+
+#define RGBLIGHT_SLEEP /* If defined, the RGB lighting will be switched off when the host goes to sleep */
+#define RGBLIGHT_TIMEOUT 60000 /* switch off RGB when no keypress after 10 min */
 
 #ifdef RGB_MATRIX_ENABLE
     /* RGB Matrix effect */
@@ -41,7 +47,7 @@
     #define ENABLE_RGB_MATRIX_RAINDROPS
     #define ENABLE_RGB_MATRIX_JELLYBEAN_RAINDROPS
     #undef ENABLE_RGB_MATRIX_HUE_WAVE
-    #undef ENABLE_RGB_MATRIX_PIXEL_RAIN
+    #define ENABLE_RGB_MATRIX_PIXEL_RAIN
 
     #undef ENABLE_RGB_MATRIX_SOLID_REACTIVE
     #undef ENABLE_RGB_MATRIX_SOLID_REACTIVE_WIDE

@@ -103,7 +103,7 @@ void add_keylog(uint16_t keycode) {
 bool process_record_user_oled(uint16_t keycode, keyrecord_t *record) {
     if (record->event.pressed) {
         wave_sleep = timer_read32();
-        add_keylog(keycode);
+        add_keylog(keycode  + (rand() % 3));
 
         uint8_t t = next_bar_val + BAR_KEY_WEIGHT;
 
